@@ -12,10 +12,10 @@ channel = connection.channel()
 
 channel.exchange_declare(exchange='pubsub', exchange_type=ExchangeType.fanout)
 
-queue = channel.queue_declare(queue = '', exclusive=True)  #Escolhe aleatoriamente uma fila
+queue = channel.queue_declare(queue = '', exclusive=True)  #Cria aleatoriamente uma fila
 #exclusive faz com que quando terminar, a fila é excluída
 
-channel.queue_bind(exchange='pubsub', queue=queue.method.queue)
+channel.queue_bind(exchange='pubsub', queue=queue.method.queue)     #Bind necessario com o exchange para receber as mensagens
 
 channel.basic_consume(queue = queue.method.queue, auto_ack=True, on_message_callback=on_message_received)
 

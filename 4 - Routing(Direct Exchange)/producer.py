@@ -9,10 +9,10 @@ channel = connection.channel()
 
 channel.exchange_declare(exchange = 'routing', exchange_type=ExchangeType.direct)
 
-message = "This message needs to be routed"
+message = "Essa mensagem precisa ser roteada"
 
-channel.basic_publish(exchange = 'routing', routing_key='both', body=message)
+channel.basic_publish(exchange = 'routing', routing_key='both', body=message)   #Routing key aqui define qual consumidor vai receber
 
-print(f"sent message: {message}")
+print(f"Enviou uma mensagem: {message}")
 
 connection.close

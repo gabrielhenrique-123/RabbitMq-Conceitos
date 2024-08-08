@@ -14,7 +14,7 @@ channel.exchange_declare(exchange = 'mytopicexchange', exchange_type=ExchangeTyp
 
 queue = channel.queue_declare(queue = '', exclusive= True)  
 
-channel.queue_bind(exchange='mytopicexchange', queue=queue.method.queue, routing_key='#.payments')
+channel.queue_bind(exchange='mytopicexchange', queue=queue.method.queue, routing_key='#.payments')  #Uso de #
 
 channel.basic_consume(queue = queue.method.queue, auto_ack=True, on_message_callback=on_message_received)
 

@@ -2,7 +2,7 @@ import pika
 from pika.exchange_type import ExchangeType
 
 def on_message_received(ch, method, properties, body):
-    print(f"Payments Service - received new message: {body}")
+    print(f"Payments Service - recebeu uma nova mensagem: {body}")
 
 connection_parameters = pika.ConnectionParameters('localhost')
 

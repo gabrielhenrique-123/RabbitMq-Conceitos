@@ -8,10 +8,10 @@ channel = connection.channel()
 
 channel.queue_declare(queue = 'letterbox')  
 
-message = "Hello World"
+message = "Ola consumidor"
 
 channel.basic_publish(exchange = '', routing_key='letterbox', body=message)
 
-print(f"sent message: {message}")
+print(f"Enviou a mensagem: {message}")
 
 connection.close

@@ -7,16 +7,17 @@ connection = pika.BlockingConnection(connection_parameters)
 
 channel = connection.channel()
 
-channel.exchange_declare('headersexchange', ExchangeType.headers)
+channel.exchange_declare('headersexchange', exchange_type=ExchangeType.headers)
 
-message = 'Essa mensagem usa Headers Exchange'
+message = "Essa mensagem usa Headers Exchange"
 
+# Enviando a mensagem com os cabeçalhos corretos para correspondência
 channel.basic_publish(
     exchange='headersexchange', 
-    routing_key='',   #Não é necessário Headers Exchange
+    routing_key='',  # Não é necessário com headers exchange
     body=message, 
     properties=pika.BasicProperties(headers={'name': 'brian'}))
 
-print(f'sent message: {message}')
+print(f'Enviou uma mensagem: {message}') 
 
 connection.close()
